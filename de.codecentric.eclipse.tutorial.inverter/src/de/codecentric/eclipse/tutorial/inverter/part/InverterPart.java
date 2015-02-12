@@ -1,60 +1,58 @@
 package de.codecentric.eclipse.tutorial.inverter.part;
 
-import javax.annotation.PostConstruct;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 
-import org.eclipse.jface.layout.GridDataFactory;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
+import javax.annotation.PostConstruct;
 
 import de.codecentric.eclipse.tutorial.inverter.helper.StringInverter;
 
 public class InverterPart {
 	
 	@PostConstruct
-	public void postConstruct(Composite parent) {
-		parent.setLayout(new GridLayout(3, true));
-		
-		Label inputLabel = new Label(parent, SWT.NONE);
+	public void postConstruct(GridPane parent) {
+		Label inputLabel = new Label();
 		inputLabel.setText("String to revert:");
-		GridDataFactory.fillDefaults().applyTo(inputLabel);
+		GridPane.setConstraints(inputLabel, 0, 0);
+		GridPane.setMargin(inputLabel, new Insets(5.0));
 		
-		final Text input = new Text(parent, SWT.BORDER);
-		GridDataFactory.fillDefaults().grab(true, false).applyTo(input);
+		final TextField input = new TextField();
+		GridPane.setConstraints(input, 1, 0);
+		GridPane.setHgrow(input, Priority.ALWAYS);
+		GridPane.setMargin(input, new Insets(5.0));
 		
-		Button button = new Button(parent, SWT.PUSH);
+		Button button = new Button();
 		button.setText("Revert");
-		GridDataFactory.defaultsFor(button).applyTo(button);
+		GridPane.setConstraints(button, 2, 0);
+		GridPane.setMargin(button, new Insets(5.0));
 		
-		Label outputLabel = new Label(parent, SWT.NONE);
+		Label outputLabel = new Label();
 		outputLabel.setText("Inverted String:");
-		GridDataFactory.fillDefaults().applyTo(outputLabel);
+		GridPane.setConstraints(outputLabel, 0, 1);
+		GridPane.setMargin(outputLabel, new Insets(5.0));
 		
-		final Text output = new Text(parent, SWT.READ_ONLY | SWT.WRAP);
-		GridDataFactory.fillDefaults().grab(true, true).span(2, 1).applyTo(output);
+		final Label output = new Label();
+		GridPane.setConstraints(output, 1, 1);
+		GridPane.setColumnSpan(output, 2);
+		GridPane.setHgrow(output, Priority.ALWAYS);
+		GridPane.setMargin(output, new Insets(5.0));
 		
-		button.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
+		button.setOnMouseClicked((e) -> 
+			output.setText(StringInverter.invert(input.getText())));
+
+		input.setOnKeyPressed(event -> {
+			if (KeyCode.ENTER.equals(event.getCode())) {
 				output.setText(StringInverter.invert(input.getText()));
 			}
 		});
-
-		input.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (e.keyCode == SWT.CR
-						|| e.keyCode == SWT.KEYPAD_CR) {
-					output.setText(StringInverter.invert(input.getText()));
-				}
-			}
-		});
+		
+		// don't forget to add children to gridpane
+		parent.getChildren().addAll(
+				inputLabel, input, button, outputLabel, output);
 	}
 }
