@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmi:id="_tv09MKYzEeSD7pZHnwEr_g" elementId="org.eclipse.e4.ide.application" bindingContexts="_tv09OaYzEeSD7pZHnwEr_g">
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_tv09MKYzEeSD7pZHnwEr_g" elementId="org.eclipse.e4.ide.application" bindingContexts="_tv09OaYzEeSD7pZHnwEr_g">
   <children xsi:type="basic:TrimmedWindow" xmi:id="_tv09MaYzEeSD7pZHnwEr_g" label="de.codecentric.eclipse.tutorial.app" width="500" height="400">
     <children xsi:type="basic:PartSashContainer" xmi:id="_eJLHQKbJEeSD7pZHnwEr_g" elementId="de.codecentric.eclipse.tutorial.app.partsashcontainer.0">
       <children xsi:type="basic:Part" xmi:id="_hJgEsKbJEeSD7pZHnwEr_g" elementId="de.codecentric.eclipse.tutorial.app.part.0" contributionURI="bundleclass://de.codecentric.eclipse.tutorial.inverter/de.codecentric.eclipse.tutorial.inverter.part.InverterPart">
         <tags>Container:GridPane</tags>
       </children>
     </children>
+    <mainMenu xmi:id="_1ns48MF9EeSt_LGLeCVQfg" elementId="org.eclipse.ui.main.menu">
+      <children xsi:type="menu:Menu" xmi:id="_5XOesMF9EeSt_LGLeCVQfg" elementId="org.eclipse.ui.file.menu" label="File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_67UHoMF9EeSt_LGLeCVQfg" elementId="de.codecentric.eclipse.tutorial.app.handledmenuitem.update" label="Update" command="_aisP8MF8EeSt_LGLeCVQfg"/>
+      </children>
+    </mainMenu>
   </children>
+  <handlers xmi:id="_o5hLkMF8EeSt_LGLeCVQfg" elementId="de.codecentric.eclipse.tutorial.app.handler.update" contributionURI="bundleclass://de.codecentric.eclipse.tutorial.app/de.codecentric.eclipse.tutorial.app.handler.UpdateHandler" command="_aisP8MF8EeSt_LGLeCVQfg"/>
   <rootContext xmi:id="_tv09OaYzEeSD7pZHnwEr_g" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
     <children xmi:id="_tv09OqYzEeSD7pZHnwEr_g" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
     <children xmi:id="_tv09O6YzEeSD7pZHnwEr_g" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
+  <commands xmi:id="_aisP8MF8EeSt_LGLeCVQfg" elementId="de.codecentric.eclipse.tutorial.app.command.update" commandName="Update"/>
   <addons xmi:id="_tv09MqYzEeSD7pZHnwEr_g" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_tv09M6YzEeSD7pZHnwEr_g" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_tv09NaYzEeSD7pZHnwEr_g" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
