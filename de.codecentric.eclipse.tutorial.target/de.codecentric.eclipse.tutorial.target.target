@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="de.codecentric.eclipse.tutorial.target" sequenceNumber="5">
+<?pde version="3.8"?><target name="de.codecentric.eclipse.tutorial.target" sequenceNumber="38">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.fx.target.feature.feature.group" version="1.2.0.201501301037"/>
-<repository location="http://download.eclipse.org/efxclipse/runtime-released/1.2.0/site"/>
+<unit id="org.eclipse.fx.target.feature.feature.group" version="2.0.0.201503030702"/>
+<repository location="http://download.eclipse.org/efxclipse/runtime-nightly/site"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.equinox.executable.feature.group" version="3.6.100.v20140819-1617"/>
-<repository location="http://download.eclipse.org/releases/luna"/>
+<unit id="org.eclipse.ecf.filetransfer.ssl.feature.feature.group" version="1.0.0.v20141221-2352"/>
+<unit id="org.eclipse.ecf.filetransfer.httpclient4.ssl.feature.feature.group" version="1.0.0.v20141221-2352"/>
+<unit id="org.eclipse.ecf.core.ssl.feature.feature.group" version="1.0.0.v20141221-2352"/>
+<unit id="org.eclipse.equinox.executable.feature.group" version="3.6.100.v20150127-1814"/>
+<unit id="org.eclipse.equinox.p2.core.feature.feature.group" version="1.3.0.v20150126-1400"/>
+<unit id="org.eclipse.ecf.core.feature.feature.group" version="1.1.0.v20141221-2352"/>
+<unit id="org.eclipse.ecf.filetransfer.feature.feature.group" version="3.9.2.v20141221-2352"/>
+<unit id="org.eclipse.ecf.filetransfer.httpclient4.feature.feature.group" version="3.9.2.v20141221-2352"/>
+<repository location="http://download.eclipse.org/eclipse/updates/4.5milestones"/>
 </location>
 </locations>
 </target>
