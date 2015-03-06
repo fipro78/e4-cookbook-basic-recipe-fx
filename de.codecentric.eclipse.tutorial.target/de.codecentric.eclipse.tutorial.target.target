@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="de.codecentric.eclipse.tutorial.target" sequenceNumber="38">
+<?pde version="3.8"?><target name="de.codecentric.eclipse.tutorial.target" sequenceNumber="43">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.fx.target.feature.feature.group" version="2.0.0.201503030702"/>
+<unit id="org.eclipse.fx.target.feature.feature.group" version="2.0.0.201503060702"/>
 <repository location="http://download.eclipse.org/efxclipse/runtime-nightly/site"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
