@@ -9,17 +9,20 @@
     <mainMenu xmi:id="_1ns48MF9EeSt_LGLeCVQfg" elementId="org.eclipse.ui.main.menu">
       <children xsi:type="menu:Menu" xmi:id="_5XOesMF9EeSt_LGLeCVQfg" elementId="org.eclipse.ui.file.menu" label="File">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_67UHoMF9EeSt_LGLeCVQfg" elementId="de.codecentric.eclipse.tutorial.app.handledmenuitem.update" label="Update" command="_aisP8MF8EeSt_LGLeCVQfg"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_T2dVoMWnEeSP_6YF0H3kdw" elementId="de.codecentric.eclipse.tutorial.app.handledmenuitem.updateEfx" label="Update EFX" command="_OFv7QMWnEeSP_6YF0H3kdw"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_e0xVsMPYEeSt_LGLeCVQfg" elementId="de.codecentric.eclipse.tutorial.app.handledmenuitem.exit" label="Exit" command="_FCv-kMPXEeSt_LGLeCVQfg"/>
       </children>
     </mainMenu>
   </children>
   <handlers xmi:id="_o5hLkMF8EeSt_LGLeCVQfg" elementId="de.codecentric.eclipse.tutorial.app.handler.update" contributionURI="bundleclass://de.codecentric.eclipse.tutorial.app/de.codecentric.eclipse.tutorial.app.handler.UpdateHandler" command="_aisP8MF8EeSt_LGLeCVQfg"/>
+  <handlers xmi:id="_Lpmo8MWnEeSP_6YF0H3kdw" elementId="de.codecentric.eclipse.tutorial.app.handler.updateEfx" contributionURI="bundleclass://de.codecentric.eclipse.tutorial.app/de.codecentric.eclipse.tutorial.app.handler.FXUpdateHandler" command="_OFv7QMWnEeSP_6YF0H3kdw"/>
   <handlers xmi:id="_K_GBMMPXEeSt_LGLeCVQfg" elementId="de.codecentric.eclipse.tutorial.app.handler.exit" contributionURI="bundleclass://de.codecentric.eclipse.tutorial.app/de.codecentric.eclipse.tutorial.app.handler.ExitHandler" command="_FCv-kMPXEeSt_LGLeCVQfg"/>
   <rootContext xmi:id="_tv09OaYzEeSD7pZHnwEr_g" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
     <children xmi:id="_tv09OqYzEeSD7pZHnwEr_g" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
     <children xmi:id="_tv09O6YzEeSD7pZHnwEr_g" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
   <commands xmi:id="_aisP8MF8EeSt_LGLeCVQfg" elementId="de.codecentric.eclipse.tutorial.app.command.update" commandName="Update"/>
+  <commands xmi:id="_OFv7QMWnEeSP_6YF0H3kdw" elementId="de.codecentric.eclipse.tutorial.app.command.updateEfx" commandName="Update EFX"/>
   <commands xmi:id="_FCv-kMPXEeSt_LGLeCVQfg" elementId="de.codecentric.eclipse.tutorial.app.command.exit" commandName="Exit"/>
   <addons xmi:id="_tv09MqYzEeSD7pZHnwEr_g" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_tv09M6YzEeSD7pZHnwEr_g" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
