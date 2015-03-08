@@ -35,10 +35,6 @@ public class UpdateHandler {
         };
         
         updateJob.schedule();
-            
-            // update synchronously
-//            update(agent);
-            
     }
 
     private IStatus update(final IProvisioningAgent agent, UISynchronize sync, IWorkbench workbench) {
@@ -80,9 +76,6 @@ public class UpdateHandler {
                 });
                 
                 provisioningJob.schedule();
-//                return provisioningJob.runModal(sub.newChild(100));
-//                if (status.getSeverity() == IStatus.CANCEL)
-//                    return Status.CANCEL_STATUS;
             }
             else {
                 if (operation.hasResolved()) {
