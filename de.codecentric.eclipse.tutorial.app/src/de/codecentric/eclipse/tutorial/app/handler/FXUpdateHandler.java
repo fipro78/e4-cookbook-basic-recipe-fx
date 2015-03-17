@@ -34,7 +34,7 @@ public class FXUpdateHandler {
 									"Updates installed, restart?", 
 									"Updates have been installed successfully, do you want to restart?")) {
 								
-								restartService.restart(true);
+								sync.syncExec(() -> restartService.restart(true));
 							}
 						});
 					}
