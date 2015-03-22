@@ -43,7 +43,9 @@
 			nativeBundles="all"
 			updatemode="background"
 			>
-			<fx:platform basedir="${java.home}"/>
+			<fx:platform basedir="${java.home}">
+				<fx:property name="org.osgi.framework.bundle.parent" value="ext"/>
+			</fx:platform>
 			<fx:info title="codecentric Eclipse Tutorial App" vendor=""/>
 			<fx:application refid="fxApplication"/>
 			<fx:resources refid="appRes"/>

@@ -45,7 +45,7 @@ public class InverterPart {
 			output.setText(StringInverter.invert(input.getText())));
 
 		input.setOnAction(event ->
-				output.setText(StringInverter.invert(input.getText())));
+			output.setText(StringInverter.invert(input.getText())));
 		
 		// don't forget to add children to gridpane
 		parent.getChildren().addAll(
