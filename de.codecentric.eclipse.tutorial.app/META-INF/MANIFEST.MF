@@ -53,3 +53,5 @@ Import-Package: javafx.animation;version="2.2.0",
  javafx.util.converter;version="2.2.0",
  javax.annotation;version="1.0.0",
  javax.inject;version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Service-Component: OSGI-INF/defaulttheme.xml

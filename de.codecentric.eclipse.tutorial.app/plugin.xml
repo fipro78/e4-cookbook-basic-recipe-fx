@@ -8,16 +8,16 @@
             name="codecentric Eclipse Tutorial App"
             application="org.eclipse.fx.ui.workbench.fx.application">
          <property
-               name="applicationCSS"
-               value="platform:/plugin/de.codecentric.eclipse.tutorial.app/css/default.css">
-         </property>
-         <property
                name="appName"
                value="codecentric Eclipse Tutorial App">
          </property>
          <property
                name="applicationXMI"
                value="de.codecentric.eclipse.tutorial.app/Application.e4xmi">
+         </property>
+         <property
+               name="cssTheme"
+               value="theme.default">
          </property>
       </product>
    </extension>
