@@ -8,10 +8,19 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
-import de.codecentric.eclipse.tutorial.inverter.helper.StringInverter;
+import org.eclipse.e4.core.services.events.IEventBroker;
+
+import de.codecentric.eclipse.tutorial.service.inverter.InverterService;
 
 public class InverterPart {
+	
+	@Inject
+	InverterService inverter;
+	
+	@Inject
+	IEventBroker broker;
 	
 	@PostConstruct
 	public void postConstruct(GridPane parent) {
@@ -41,11 +50,15 @@ public class InverterPart {
 		GridPane.setHgrow(output, Priority.ALWAYS);
 		GridPane.setMargin(output, new Insets(5.0));
 		
-		button.setOnAction(event -> 
-			output.setText(StringInverter.invert(input.getText())));
+		button.setOnAction(event -> {
+			output.setText(inverter.invert(input.getText()));
+			broker.post("TOPIC_LOGGING", "triggered via button");
+		});
 
-		input.setOnAction(event ->
-				output.setText(StringInverter.invert(input.getText())));
+		input.setOnAction(event -> {
+			output.setText(inverter.invert(input.getText()));
+			broker.post("TOPIC_LOGGING", "triggered via input");
+		});
 		
 		// don't forget to add children to gridpane
 		parent.getChildren().addAll(
