@@ -18,7 +18,7 @@ import org.eclipse.fx.ui.services.sync.UISynchronize;
 public class FXUpdateHandler {
 
 	@Execute
-	public void execute(UpdateService updateService, RestartService restartService, UISynchronize sync) {
+	public void execute(UpdateService updateService, UISynchronize sync, RestartService restartService) {
 		// Version 1.2
 //		updateService.checkUpdate((ucd) -> {
 //			if (ucd.nothingToUpdate()) {
