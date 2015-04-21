@@ -13,33 +13,33 @@ import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.e4.core.di.annotations.Execute;
-import org.eclipse.e4.ui.di.UISynchronize;
-import org.eclipse.e4.ui.workbench.IWorkbench;
 import org.eclipse.equinox.p2.core.IProvisioningAgent;
 import org.eclipse.equinox.p2.operations.ProvisioningJob;
 import org.eclipse.equinox.p2.operations.ProvisioningSession;
 import org.eclipse.equinox.p2.operations.UpdateOperation;
+import org.eclipse.fx.ui.services.restart.RestartService;
+import org.eclipse.fx.ui.services.sync.UISynchronize;
 
 public class UpdateHandler {
 
 	boolean cancelled = false;
 	
 	@Execute
-	public void execute(IProvisioningAgent agent, UISynchronize sync, IWorkbench workbench) {
+	public void execute(IProvisioningAgent agent, UISynchronize sync, RestartService restartService) {
 
 		// use a simple job
 		Job updateJob = new Job("Update") {
 
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
-				return update(agent, sync, workbench);
+				return update(agent, sync, restartService);
 			}
 		};
 
 		updateJob.schedule();
 	}
 
-	private IStatus update(final IProvisioningAgent agent, UISynchronize sync, IWorkbench workbench) {
+	private IStatus update(final IProvisioningAgent agent, UISynchronize sync, RestartService restartService) {
 		// configure update operation
 		ProvisioningSession session = new ProvisioningSession(agent);
 		// update the whole running profile, otherwise specify IUs
@@ -52,57 +52,48 @@ public class UpdateHandler {
 			return Status.CANCEL_STATUS;
 		} 
 		else {
-			sync.syncExec(new Runnable() {
-				@Override
-				public void run() {
-					final ProvisioningJob provisioningJob = operation.getProvisioningJob(null);
-					if (provisioningJob != null) {
-						Alert alert = new Alert(AlertType.CONFIRMATION);
-						alert.setTitle("Updates available");
-						alert.setContentText("There are updates available. Do you want to install them now?");
-
-						Optional<ButtonType> result = alert.showAndWait();
-						if (result.get() == ButtonType.OK) {
-							provisioningJob.addJobChangeListener(new JobChangeAdapter() {
-								@Override
-								public void done(IJobChangeEvent event) {
-									if (event.getResult().isOK()) {
-										sync.syncExec(new Runnable() {
-
-											@Override
-											public void run() {
-												Alert alert = new Alert(AlertType.CONFIRMATION);
-												alert.setTitle("Updates installed, restart?");
-												alert.setContentText("Updates have been installed successfully, do you want to restart?");
-
-												Optional<ButtonType> result = alert.showAndWait();
-												if (result.get() == ButtonType.OK) {
-													workbench.restart();
-												}
-											}
-										});
-									}
-									super.done(event);
+			final ProvisioningJob provisioningJob = operation.getProvisioningJob(null);
+			if (provisioningJob != null) {
+				if (showConfirmation(
+						sync, 
+						"Updates available", 
+						"There are updates available. Do you want to install them now?")) {
+					
+					provisioningJob.addJobChangeListener(new JobChangeAdapter() {
+						@Override
+						public void done(IJobChangeEvent event) {
+							if (event.getResult().isOK()) {
+								if (showConfirmation(
+										sync, 
+										"Updates installed, restart?", 
+										"Updates have been installed successfully, do you want to restart?")) {
+							
+									// restart the workbench with clearPersistedState
+									sync.syncExec(() -> restartService.restart(true));
 								}
-							});
+							}
+							else {
+								showError(sync, event.getResult().getMessage());
+								cancelled = true;
+							}
+						}
+					});
 
-							provisioningJob.schedule();
-						}
-						else {
-							cancelled = true;
-						}
-					}
-					else {
-						if (operation.hasResolved()) {
-							showError(sync, "Couldn't get provisioning job: " + operation.getResolutionResult());
-						} 
-						else {
-							showError(sync, "Couldn't resolve provisioning job");
-						}
-						cancelled = true;
-					}
+					provisioningJob.schedule();
 				}
-			});
+				else {
+					cancelled = true;
+				}
+			}
+			else {
+				if (operation.hasResolved()) {
+					showError(sync, "Couldn't get provisioning job: " + operation.getResolutionResult());
+				} 
+				else {
+					showError(sync, "Couldn't resolve provisioning job");
+				}
+				cancelled = true;
+			}
 		}
 
 		if (cancelled) {
@@ -145,5 +136,15 @@ public class UpdateHandler {
 				alert.showAndWait();
 			}
 		});
+	}
+	
+	private boolean showConfirmation(UISynchronize sync, final String title, final String message) {
+		return sync.syncExec(() -> {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle(title);
+			alert.setContentText(message);
+			Optional<ButtonType> result = alert.showAndWait();
+			return (result.get() == ButtonType.OK);
+		}, false);
 	}
 }

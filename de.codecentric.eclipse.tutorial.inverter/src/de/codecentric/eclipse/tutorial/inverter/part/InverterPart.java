@@ -4,7 +4,6 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
@@ -42,14 +41,11 @@ public class InverterPart {
 		GridPane.setHgrow(output, Priority.ALWAYS);
 		GridPane.setMargin(output, new Insets(5.0));
 		
-		button.setOnMouseClicked((e) -> 
+		button.setOnAction(event -> 
 			output.setText(StringInverter.invert(input.getText())));
 
-		input.setOnKeyPressed(event -> {
-			if (KeyCode.ENTER.equals(event.getCode())) {
-				output.setText(StringInverter.invert(input.getText()));
-			}
-		});
+		input.setOnAction(event ->
+			output.setText(StringInverter.invert(input.getText())));
 		
 		// don't forget to add children to gridpane
 		parent.getChildren().addAll(
