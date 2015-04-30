@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="de.codecentric.eclipse.tutorial.target" sequenceNumber="59">
+<?pde version="3.8"?><target name="de.codecentric.eclipse.tutorial.target" sequenceNumber="60">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.equinox.executable.feature.group" version="3.6.100.v20150127-1814"/>
 <repository location="http://download.eclipse.org/eclipse/updates/4.5milestones"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.fx.target.feature.feature.group" version="2.0.0.201504060602"/>
+<unit id="org.eclipse.fx.target.feature.feature.group" version="2.0.0.201504211410"/>
 <repository location="http://download.eclipse.org/efxclipse/runtime-nightly/site"/>
 </location>
 </locations>

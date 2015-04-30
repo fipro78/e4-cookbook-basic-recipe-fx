@@ -19,6 +19,10 @@
                name="cssTheme"
                value="theme.default">
          </property>
+         <property
+               name="lifeCycleURI"
+               value="bundleclass://de.codecentric.eclipse.tutorial.app/de.codecentric.eclipse.tutorial.app.LifecycleManager">
+         </property>
       </product>
    </extension>
 

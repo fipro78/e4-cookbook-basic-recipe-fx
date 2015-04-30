@@ -5,9 +5,13 @@
       <children xsi:type="basic:Part" xmi:id="_hJgEsKbJEeSD7pZHnwEr_g" elementId="de.codecentric.eclipse.tutorial.app.part.0" contributionURI="bundleclass://de.codecentric.eclipse.tutorial.inverter/de.codecentric.eclipse.tutorial.inverter.part.InverterPart">
         <tags>Container:GridPane</tags>
       </children>
+      <children xsi:type="basic:Part" xmi:id="_iWa0kO8nEeS1VORCD6nLaQ" elementId="de.codecentric.eclipse.tutorial.app.part.1" contributionURI="bundleclass://de.codecentric.eclipse.tutorial.app/de.codecentric.eclipse.tutorial.app.part.FileContentPart"/>
     </children>
     <mainMenu xmi:id="_1ns48MF9EeSt_LGLeCVQfg" elementId="org.eclipse.ui.main.menu">
       <children xsi:type="menu:Menu" xmi:id="_5XOesMF9EeSt_LGLeCVQfg" elementId="org.eclipse.ui.file.menu" label="File">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_4DurAO8mEeS1VORCD6nLaQ" elementId="de.codecentric.eclipse.tutorial.app.handledmenuitem.open" label="Open" command="_psA-kO8mEeS1VORCD6nLaQ"/>
+        <children xsi:type="menu:MenuSeparator" xmi:id="_9lY8wO8mEeS1VORCD6nLaQ" elementId="de.codecentric.eclipse.tutorial.app.menuseparator.0"/>
+        <children xsi:type="menu:DynamicMenuContribution" xmi:id="__beUoO8mEeS1VORCD6nLaQ" elementId="de.codecentric.eclipse.tutorial.app.dynamicmenucontribution.0" contributionURI="bundleclass://de.codecentric.eclipse.tutorial.app/de.codecentric.eclipse.tutorial.app.menu.RecentFileItems"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_67UHoMF9EeSt_LGLeCVQfg" elementId="de.codecentric.eclipse.tutorial.app.handledmenuitem.update" label="Update" command="_aisP8MF8EeSt_LGLeCVQfg"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_7sHY0MP2EeSP_6YF0H3kdw" elementId="de.codecentric.eclipse.tutorial.app.handledmenuitem.updateEfx" label="Update EFX" command="_0tWP4MP2EeSP_6YF0H3kdw"/>
       </children>
@@ -15,12 +19,16 @@
   </children>
   <handlers xmi:id="_o5hLkMF8EeSt_LGLeCVQfg" elementId="de.codecentric.eclipse.tutorial.app.handler.update" contributionURI="bundleclass://de.codecentric.eclipse.tutorial.app/de.codecentric.eclipse.tutorial.app.handler.UpdateHandler" command="_aisP8MF8EeSt_LGLeCVQfg"/>
   <handlers xmi:id="_3fSzEMP2EeSP_6YF0H3kdw" elementId="de.codecentric.eclipse.tutorial.app.handler.updateEFX" contributionURI="bundleclass://de.codecentric.eclipse.tutorial.app/de.codecentric.eclipse.tutorial.app.handler.FXUpdateHandler" command="_0tWP4MP2EeSP_6YF0H3kdw"/>
+  <handlers xmi:id="_vR3z0O8mEeS1VORCD6nLaQ" elementId="de.codecentric.eclipse.tutorial.app.handler.open" contributionURI="bundleclass://de.codecentric.eclipse.tutorial.app/de.codecentric.eclipse.tutorial.app.handler.OpenHandler" command="_psA-kO8mEeS1VORCD6nLaQ"/>
   <rootContext xmi:id="_tv09OaYzEeSD7pZHnwEr_g" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
     <children xmi:id="_tv09OqYzEeSD7pZHnwEr_g" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
     <children xmi:id="_tv09O6YzEeSD7pZHnwEr_g" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
   <commands xmi:id="_aisP8MF8EeSt_LGLeCVQfg" elementId="de.codecentric.eclipse.tutorial.app.command.update" commandName="Update"/>
   <commands xmi:id="_0tWP4MP2EeSP_6YF0H3kdw" elementId="de.codecentric.eclipse.tutorial.app.command.updateEfx" commandName="Update EFX"/>
+  <commands xmi:id="_psA-kO8mEeS1VORCD6nLaQ" elementId="de.codecentric.eclipse.tutorial.app.command.open" commandName="Open">
+    <parameters xmi:id="_rd1hgO8mEeS1VORCD6nLaQ" elementId="de.codecentric.eclipse.tutorial.app.commandparameter.fileToOpen" name="fileToOpen"/>
+  </commands>
   <addons xmi:id="_tv09MqYzEeSD7pZHnwEr_g" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_tv09M6YzEeSD7pZHnwEr_g" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_tv09NaYzEeSD7pZHnwEr_g" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
